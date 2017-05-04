@@ -15,7 +15,7 @@ import com.srmgmail.anand.kr.sunshine.utilities.SunshineDateUtils;
 /**
  * Created by Anand_Kumar.
  */
-public class WeatherProvider extends ContentProvider{
+public class WeatherProvider extends ContentProvider {
 
     public static final int CODE_WEATHER = 100;
 
@@ -25,12 +25,12 @@ public class WeatherProvider extends ContentProvider{
 
     private WeatherDbHelper mOpenHelper;
 
-    public static UriMatcher buildUriMatcher(){
+    public static UriMatcher buildUriMatcher() {
 
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = WeatherContract.CONTENT_AUTHORITY;
 
-        matcher.addURI(authority , WeatherContract.PATH_WEATHER , CODE_WEATHER);
+        matcher.addURI(authority, WeatherContract.PATH_WEATHER, CODE_WEATHER);
 
         matcher.addURI(authority, WeatherContract.PATH_WEATHER + "/#", CODE_WEATHER_WITH_DATE);
 
@@ -86,7 +86,7 @@ public class WeatherProvider extends ContentProvider{
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         Cursor cursor;
-        switch (sUriMatcher.match(uri)){
+        switch (sUriMatcher.match(uri)) {
 
             case CODE_WEATHER_WITH_DATE: {
 
@@ -131,7 +131,8 @@ public class WeatherProvider extends ContentProvider{
     @Nullable
     @Override
     public String getType(Uri uri) {
-        throw new RuntimeException("We are not implementing getType in Sunshine.");    }
+        throw new RuntimeException("We are not implementing getType in Sunshine.");
+    }
 
     @Nullable
     @Override
